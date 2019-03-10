@@ -1,7 +1,5 @@
 # Lab 01 - Starting a New React Project
 
-## Table of Contents <!-- omit in toc -->
-
 - [Lab 01 - Starting a New React Project](#lab-01---starting-a-new-react-project)
   - [Creating a new React App](#creating-a-new-react-app)
     - [Available Scripts](#available-scripts)
@@ -95,8 +93,8 @@ my-app
 
 For the project to build, **these files must exist with exact filenames**:
 
-* `public/index.html` is the page template;
-* `src/index.js` is the JavaScript entry point.
+- `public/index.html` is the page template;
+- `src/index.js` is the JavaScript entry point.
 
 We are going to create new directories and move some files, to get the following folder structure:
 
@@ -116,7 +114,7 @@ my-app/
             └── logo.svg
         └── styles/
             └── index.css
-    └── components/
+    └── modules/
         └── App/
             ├── App.css
             ├── App.js
@@ -132,7 +130,7 @@ Don't forget to update the path for the imported files in `App.js` and `index.js
 /* index.js */
 ...
 import './assets/styles/index.css';
-import App from './components/App/App';
+import App from './modules/App/App';
 import * as serviceWorker from './services/serviceWorker';
 ```
 
@@ -154,7 +152,7 @@ Install node-sass into your project directory:
 npm install node-sass --save
 ```
 
-Now you can rename your `App.css` file to `App.scss` and update `App.js` to import `App.scss`. 
+Now you can rename your `App.css` file to `App.scss` and update `App.js` to import `App.scss`.
 
 ```javascript
 /* App.js */
