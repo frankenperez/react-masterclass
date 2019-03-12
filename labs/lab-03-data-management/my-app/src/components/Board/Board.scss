@@ -1,0 +1,54 @@
+/*** Colors ***/
+$light: #ddd;
+$dark: #333;
+
+.Board{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  transition: color, background-color 0.4s ease-in-out;
+}
+
+.Board__switcher{
+  display: block;
+  position: relative;
+  padding: 0 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  height: 2rem;
+  line-height: 2rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color, background-color 0.4s ease-in-out;
+
+  &:hover,
+  &:focus,
+  &:active{
+    outline: 0;
+  }
+}
+
+.Board--light{
+  background-color: $light;
+  color: $dark;
+
+  .Board__switcher{
+    background: $dark;
+    color: $light;
+  }
+}
+
+.Board--dark{
+  background-color: $dark;
+  color: $light;
+
+  .Board__switcher{
+    background: $light;
+    color: $dark;
+  }
+}
