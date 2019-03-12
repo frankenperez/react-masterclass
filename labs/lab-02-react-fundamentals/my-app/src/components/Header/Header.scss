@@ -1,44 +1,19 @@
 .Header{
+  position: fixed;
+  top: 0;
   display: flex;
   flex: 0 1 auto;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  width: 100%;
   padding: 1rem;
-  border-bottom: 1px solid #ccc;
+  background-color: #eee;
 }
 
 .Header__title{
-  font-size: 1.5rem;
-  text-align: left;
   margin: 0;
-}
-
-.Header__button{
-  display: inline-block;
-  position: relative;
-  padding: 0 1rem;
-  border: 0;
-  border-radius: 3px;
-  background-color: #3f83f8;
-  color: #fff;
-  cursor: pointer;
-  font-size: 0.75rem;
-  height: 2rem;
-  line-height: 2rem;
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: all, 0.4s ease-in-out;
-  vertical-align: middle;
-
-  &:hover, &:focus {
-      background-color: darken(#3f83f8, 5%);
-      text-decoration: none;
-  }
-
-  &:active {
-      top: 1px;
-  }
-
+  font-size: 1.5rem;
+  text-align: center;
 }

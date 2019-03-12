@@ -11,6 +11,10 @@
     - [How to render your Component](#how-to-render-your-component)
   - [Composing Components](#composing-components)
   - [Components and Props](#components-and-props)
+  - [State Management and Event Handling in Components](#state-management-and-event-handling-in-components)
+    - [Events](#events)
+  - [Stateless Components _versus_ Pure Components](#stateless-components-versus-pure-components)
+  - [Adding Default Props](#adding-default-props)
 
 ## Creating your first React Component
 
@@ -87,7 +91,6 @@ class Header extends React.Component {
           return (
           <div className="Header">
               <h1 className="Header__title">Creative Ideas</h1>
-              <button>+ New Idea</button>
           </div>
           );
       }
@@ -118,49 +121,24 @@ class Header extends React.Component {
     ```scss
     /* Header.scss */
 
-    // Import variables.scss file
     .Header{
+      position: fixed;
+      top: 0;
       display: flex;
       flex: 0 1 auto;
       flex-direction: row;
       flex-wrap: nowrap;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
+      width: 100%;
       padding: 1rem;
-      border-bottom: 1px solid #ccc;
+      background-color: #eee;
     }
 
     .Header__title{
-      font-size: 1.5rem;
-      text-align: left;
       margin: 0;
-    }
-
-    .Header__button{
-      display: inline-block;
-      position: relative;
-      padding: 0 1rem;
-      border: 0;
-      border-radius: 3px;
-      background-color: #3f83f8;
-      color: #fff;
-      cursor: pointer;
-      font-size: 0.75rem;
-      height: 2rem;
-      line-height: 2rem;
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: all, 0.4s ease-in-out;
-      vertical-align: middle;
-
-      &:hover, &:focus {
-          background-color: darken(#3f83f8, 5%);
-          text-decoration: none;
-      }
-
-      &:active {
-          top: 1px;
-      }
+      font-size: 1.5rem;
+      text-align: center;
     }
     ```
 
@@ -288,3 +266,408 @@ Conceptually, components are like JavaScript functions.  They accept arbitrary i
 **Props are Read-Only**, so all React components must act like pure functions with respect to their props.
 
 > More info about [Props](https://reactjs.org/docs/components-and-props.html)
+
+## State Management and Event Handling in Components
+
+React components will often need dynamic information (_information that can change_) in order to render themselves.  Unlike props, a component's **_state_** is not passed in from the outside and each component decides its own state.
+
+To make a component have state, give it an initial state property.
+
+1. Create a new Board component and declare a new State inside of a `constructor(props)` method:
+
+    ```javascript
+    /* Board.jsx */
+
+    import React from 'react';
+
+    class Board extends React.Component {
+      constructor(props){
+        super(props);
+        this.state = {
+            darkMode: false
+        };
+      }
+    }
+
+    export default Board;
+    ```
+
+A component can read its own state `this.state.<stateName>` and also it can change its value by calling the function `this.setState()`. This function takes an object and merges it with the component's current state.
+
+### Events
+
+The most common way to change a current state is to call a custom function when a **event** is triggered, for example by clicking on a button.
+
+Handling events with React elements is very similar to handling events on DOM elements, with two syntactic differences:
+
+- React events are named using `camelCase`, rather than lowercase. E.g.: `onClick` instead `onclick`.
+- With JSX you pass a function as the event handler, rather than a string.
+
+1. Add a render method and an event handler when the user clicks on the button (`onClick`):
+
+    ```javascript
+    /* Board.jsx */
+
+    class Board extends React.Component {
+
+      ...
+
+      render() {
+        return (
+          <div className="Board">
+            <button className="Board__switcher" onClick={this.switchMode}>
+              Switch Mode
+            </button>
+          </div>
+        );
+      }
+    }
+
+    ```
+
+2. Add a custom method that changes the `mode` state of Board component:
+
+    ```javascript
+    /* Board.jsx */
+
+    class Board extends React.Component {
+
+      ...
+
+      switchMode() {
+          this.setState({ darkMode: !this.state.darkMode });
+      }
+    ```
+
+3. Bind `this` in the component constructor:
+
+    ```javascript
+    /* Board.jsx */
+
+    constructor(props){
+        ...
+        this.switchMode = this.switchMode.bind(this);
+    }
+    ```
+
+    > In JavaScript, class methods are not bound by default. If you forget to bind `this.toggleMenu` and pass it to `onClick`, this will be `undefined` when the function is actually called.  If calling `bind` annoys you, there are two ways you can get around this: using the experimental public class fields syntax or using an arrow function in the callback.
+
+4. Add some styles to a new `Board.scss` file and import into `Board.jsx`:
+
+    ```scss
+    /* Board.scss */
+
+    /*** Colors ***/
+    $light: #ddd;
+    $dark: #333;
+
+    .Board{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      transition: color, background-color 0.4s ease-in-out;
+    }
+
+    .Board__switcher{
+      display: block;
+      position: relative;
+      padding: 0 1rem;
+      margin-bottom: 1rem;
+      border: 0;
+      border-radius: 2px;
+      cursor: pointer;
+      font-size: 0.75rem;
+      height: 2rem;
+      line-height: 2rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color, background-color 0.4s ease-in-out;
+
+      &:hover,
+      &:focus,
+      &:active{
+        outline: 0;
+      }
+    }
+
+    .Board--light{
+      background-color: $light;
+      color: $dark;
+
+      .Board__switcher{
+        background: $dark;
+        color: $light;
+      }
+    }
+
+    .Board--dark{
+      background-color: $dark;
+      color: $light;
+
+      .Board__switcher{
+        background: $light;
+        color: $dark;
+      }
+    }
+
+    ```
+
+    ```javascript
+    /* Board.jsx */
+
+    import './Board.scss';
+    ```
+
+5. Add your component to the `index.js` file in the `components` directory and include it into the App module:
+
+    ```javascript
+    /* index.js */
+
+    import Header from './Header/Header';
+    import Board from './Board/Board';
+
+    export {
+      Header,
+      Board
+    };
+    ```
+
+    ```javascript
+    /* App.js */
+
+    import React, { Component } from 'react';
+    import { Header, Board } from '../../components';
+
+    class App extends Component {
+      render() {
+        return (
+          <div className="App">
+            <Header title="Creative Ideas" />
+            <Board />
+          </div>
+        );
+      }
+    }
+
+    export default App;
+    ```
+
+6. Add a condition that checks `darkMode` state to render or not a className:
+
+    ```javascript
+    /* Menu.jsx */
+
+    render() {
+      ...
+      <div className={`Board Board--${this.state.darkMode ? 'dark' : 'light'}`}>
+      ...
+    ```
+
+    Test to change the initial state `darkMode` to `true` and the board will render in dark mode by default. Change again the value to `false`.
+
+    > Learn more about [Conditional Rendering in React](https://reactjs.org/docs/conditional-rendering.html).
+
+7. Finally, your `Board.jsx` component should look like this:
+
+    ```javascript
+    /* Board.jsx */
+
+    import React from 'react';
+    import './Board.scss';
+
+    class Board extends React.Component {
+
+      constructor(props) {
+        super(props);
+        this.state = {
+          darkMode: false
+        };
+        this.switchMode = this.switchMode.bind(this);
+      }
+
+      switchMode() {
+        this.setState({ darkMode: !this.state.darkMode });
+      }
+
+      render() {
+        return (
+          <div className={`Board Board--${this.state.darkMode ? 'dark' : 'light'}`}>
+            <button className="Board__switcher" onClick={this.switchMode}>
+              Switch Mode
+            </button>
+          </div>
+        );
+      }
+    }
+
+    export default Board;
+    ```
+
+## Stateless Components _versus_ Pure Components
+
+A **Stateless Component** is declared as a function that has no state and returns the same markup given the same props:
+
+```javascript
+HelloWorld = () => {
+  return <h1>HelloWorld</h1>;
+}
+```
+
+A **Pure Component** is one of the most significant ways to optimize React applications. The usage of Pure Component gives a considerable increase in performance because it reduces the number of render operations in the application:
+
+```javascript
+class HelloWorld extends React.PureComponent {
+  render() {
+    return <h1>HelloWorld</h1>
+  }
+}
+```
+
+1. Create a new Footer component as a Pure Component:
+
+    ```javascript
+    /* Footer.jsx */
+
+    import React from 'react';
+    import './Footer.scss';
+
+    class Footer extends React.PureComponent {
+        render() {
+            return (
+            <div className="Footer">
+                <p className="Footer__info">
+                    'My React App'
+                </p>
+            </div>
+            );
+        }
+    }
+
+    export default Footer;
+    ```
+
+2. Add some styles to your footer component into a `Footer.scss` file
+
+    ```scss
+    /* Footer.scss */
+
+    .Footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      padding: 0.5rem;
+      background-color: #eee;
+      font-size: 0.75rem;
+      text-align: center;
+    }
+    ```
+
+3. Add your new component to the `index.js` in the `components`directory and include it into the App module:
+
+    ```javascript
+    /* index.js */
+
+    import Board from './Board/Board';
+    import Footer from './Footer/Footer';
+    import Header from './Header/Header';
+
+    export {
+      Board,
+      Footer,
+      Header
+    };
+    ```
+
+    ```javascript
+    /* App.js */
+
+    import React, { Component } from 'react';
+    import { Board, Footer, Header } from '../../components';
+
+    class App extends Component {
+      render() {
+        return (
+          <div className="App">
+            <Header title="Creative Ideas" />
+            <Board />
+            <Footer />
+          </div>
+        );
+      }
+    }
+
+    export default App;
+    ```
+
+## Adding Default Props
+
+You can define some default values for your component props and ensure that these props will have a value if they were not provided by the parent component.
+
+To assign a value to a specific prop, use the special `defaultProps` property.
+
+Suppose that you want to define your `Footer__info` text as a prop `footerInfo` that could change.
+
+```javascript
+/* Footer.jsx */
+render() {
+    return (
+    <div className="Footer">
+        <p className="Footer__info">
+            {this.props.footerInfo}
+        </p>
+    </div>
+    );
+}
+```
+
+In `App.jsx` we are not passing currently a prop to our Footer component:
+
+```javascript
+/* App.jsx */
+
+render() {
+    return(
+        ...
+        <Footer />
+        ...
+    )
+}
+```
+
+To avoid an error in your application, you can define a default value to this prop.
+
+1. Add a default prop to your Footer component. _To improve the readability, you can define a `defaultProps` constant at the beginning of your file and assign its values before your component export_:
+
+    ```javascript
+    /* Footer.jsx */
+
+    import React from 'react';
+    import './Footer.scss';
+
+    const defaultProps = {
+        footerInfo: 'My React App'
+    };
+
+    class Footer extends React.PureComponent {
+        render() {
+            return (
+            <div className="Footer">
+                <p className="Footer__info">
+                    {this.props.footerInfo}
+                </p>
+            </div>
+            );
+        }
+    }
+
+    Footer.defaultProps = defaultProps;
+    export default Footer;
+    ```
+
+2. Run you application and check that it's working as expected.
+
+> Learn more about [Default Prop Values](https://reactjs.org/docs/typechecking-with-proptypes.html#default-prop-values)
+
+[< Prev](../lab-01-start-react-project) | [Next >](../lab-03)

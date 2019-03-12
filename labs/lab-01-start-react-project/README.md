@@ -26,7 +26,7 @@ To create a new app, choose a new empty directory for your project, open it in y
 npx create-react-app my-app
 ```
 
-> _[npx] comes with npm 5.2+ and higher, see [instructions for older npm versions][npm-older]_.
+> *[npx] comes with npm 5.2+ and higher, see [instructions for older npm versions][npm-older]*.
 
 [npx]: https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b
 [npm-older]: https://gist.github.com/gaearon/4064d3c23a77c74a3614c498a8bb1c5f
@@ -203,11 +203,11 @@ However, if you prefer the lint results to appear right in your editor, there ar
 
 Now your editor should report the linting warnings. To verify that it's working, go to the `App.js` file and create an ESLint error into line 8 by adding: `<div></div>`. A red underline will appear and a new error message is displayed on mouse over: _Parsing error: Adjacent JSX elements must be wrapped in an enclosing tag_.
 
-> This feature is available with `react-scripts@0.2.0` and higher. It only works with npm 3 or higher.  More information about the [ESLint package in Create React App][eslint-package].
-> Learn more about [ESLint](eslint-start).
-
-[< Prev](../lab-00) | [Next >](../lab-02)
+> This feature is available with `react-scripts@0.2.0` and higher. It only works with npm 3 or higher. More information about the [ESLint package in Create React App][eslint-package].
+> Learn more about [ESLint][eslint-start].
 
 [eslint-download]: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
-[eslint-start]: https://eslint.org/docs/user-guide/getting-started
 [eslint-package]: https://github.com/facebook/create-react-app/blob/26f701fd60cece427d0e6c5a0ae98a5c79993640/packages/eslint-config-react-app/README.md
+[eslint-start]: https://eslint.org/docs/user-guide/getting-started
+
+[< Prev](../lab-00-what-is-react) | [Next >](../lab-02-react-fundamentals)

@@ -1,5 +1,9 @@
+import Board from './Board/Board';
+import Footer from './Footer/Footer';
 import Header from './Header/Header';
 
 export {
-    Header
+  Board,
+  Footer,
+  Header
 };

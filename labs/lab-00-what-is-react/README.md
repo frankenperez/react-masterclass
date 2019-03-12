@@ -1,10 +1,7 @@
 # Lab 00 - What is React. Key Features
 
-## Contents
-
-* [What is React](#what-is-react)
-* [Key Features](#key-features)
-* [Resources](#resources)
+- [Lab 00 - What is React. Key Features](#lab-00---what-is-react-key-features)
+  - [What is React](#what-is-react)
 
 ## What is React
 
