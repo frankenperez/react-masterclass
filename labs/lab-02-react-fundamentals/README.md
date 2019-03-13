@@ -363,10 +363,12 @@ Handling events with React elements is very similar to handling events on DOM el
 
     .Board{
       display: flex;
+      box-sizing: border-box;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      align-items: flex-start;
+      justify-content: flex-start;
       min-height: 100vh;
+      padding: 100px 2.5rem 80px;
       transition: color, background-color 0.4s ease-in-out;
     }
 

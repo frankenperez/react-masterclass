@@ -1,0 +1,25 @@
+{
+  "ideas": [
+    {
+      "id": "1",
+      "title": "Idea 1",
+      "detail": "Details for idea 1"
+    }, {
+      "id": "2",
+      "title": "Idea 2",
+      "detail": "Details for idea 2"
+    }, {
+      "id": "3",
+      "title": "Idea 3",
+      "detail": "Details for idea 3"
+    }, {
+      "id": "4",
+      "title": "Idea 4",
+      "detail": "Details for idea 4"
+    }, {
+      "id": "5",
+      "title": "Idea 5",
+      "detail": "Details for idea 5"
+    }
+  ]
+}
