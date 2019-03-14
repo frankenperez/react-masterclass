@@ -304,3 +304,5 @@ The `componentDidMount` method is is the best place to put calls to fetch data b
     }
 
     ```
+
+[< Prev](../lab-02-react-fundamentals) | [Next >](../lab-04-forms)

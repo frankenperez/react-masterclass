@@ -13,7 +13,7 @@
   - [Components and Props](#components-and-props)
   - [State Management and Event Handling in Components](#state-management-and-event-handling-in-components)
     - [Events](#events)
-  - [Stateless Components _versus_ Pure Components](#stateless-components-versus-pure-components)
+  - [Stateless Components _versus_ Pure Components](#stateless-components-_versus_-pure-components)
   - [Adding Default Props](#adding-default-props)
 
 ## Creating your first React Component
@@ -672,4 +672,4 @@ To avoid an error in your application, you can define a default value to this pr
 
 > Learn more about [Default Prop Values](https://reactjs.org/docs/typechecking-with-proptypes.html#default-prop-values)
 
-[< Prev](../lab-01-start-react-project) | [Next >](../lab-03)
+[< Prev](../lab-01-start-react-project) | [Next >](../lab-03-data-management)
