@@ -2,24 +2,16 @@
   "ideas": [
     {
       "id": "1",
-      "title": "Idea 1",
-      "detail": "Details for idea 1"
+      "title": "Create a Top 10 List",
+      "detail": "Brainstorm a dozen numbered lists related to my business: Trends. Insights. Tips. To-do. To avoid. To visit. To eat. To see. To experience"
     }, {
       "id": "2",
-      "title": "Idea 2",
-      "detail": "Details for idea 2"
+      "title": "Tip Of The Day",
+      "detail": "List of quick tips to post each day during a month"
     }, {
       "id": "3",
-      "title": "Idea 3",
-      "detail": "Details for idea 3"
-    }, {
-      "id": "4",
-      "title": "Idea 4",
-      "detail": "Details for idea 4"
-    }, {
-      "id": "5",
-      "title": "Idea 5",
-      "detail": "Details for idea 5"
+      "title": "Guest Bloggers",
+      "detail": "Find other experts or business owners in tangential businesses or industries and invite them to write posts to publish on my blog."
     }
   ]
 }

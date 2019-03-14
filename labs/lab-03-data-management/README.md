@@ -7,10 +7,10 @@
     - [Starting JSON Server](#starting-json-server)
   - [React Lifecycle Methods](#react-lifecycle-methods)
     - [Commonly Used Lifecycle Methods](#commonly-used-lifecycle-methods)
-    - [Rarely Used Lifecycle Methods (_React 16.3+_)](#rarely-used-lifecycle-methods-react-163)
+    - [Rarely Used Lifecycle Methods (_React 16.3+_)](#rarely-used-lifecycle-methods-_react-163_)
     - [Legacy Lifecycle Methods](#legacy-lifecycle-methods)
   - [Fetching Data in React](#fetching-data-in-react)
-    - [Fetch API _versus_ Axios Library](#fetch-api-versus-axios-library)
+    - [Fetch API _versus_ Axios Library](#fetch-api-_versus_-axios-library)
     - [Using Axios](#using-axios)
 
 ## Getting a full fake REST API with json-server
@@ -34,16 +34,16 @@ Copy and paste the following data into a new `mockdata.json` file in `services` 
   "ideas": [
     {
       "id": "1",
-      "title": "Idea 1",
-      "detail": "Details for idea 1"
+      "title": "Create a Top 10 List",
+      "detail": "Brainstorm a dozen numbered lists related to my business: Trends. Insights. Tips. To-do. To avoid. To visit. To eat. To see. To experience"
     }, {
       "id": "2",
-      "title": "Idea 2",
-      "detail": "Details for idea 2"
+      "title": "Tip Of The Day",
+      "detail": "List of quick tips to post each day during a month"
     }, {
       "id": "3",
-      "title": "Idea 3",
-      "detail": "Details for idea 3"
+      "title": "Guest Bloggers",
+      "detail": "Find other experts or business owners in tangential businesses or industries and invite them to write posts to publish on my blog."
     }
   ]
 }
@@ -51,7 +51,7 @@ Copy and paste the following data into a new `mockdata.json` file in `services` 
 
 ### Starting JSON Server
 
-To be abble to run two scripts at the same time we can use the `concurrently` library. To install it, run the following command:
+To be able to run two scripts at the same time we can use the `concurrently` library. To install it, run the following command:
 
 ```sh
 npm install -g concurrently
@@ -145,7 +145,7 @@ The `componentDidMount` method is is the best place to put calls to fetch data b
 2. Open your `Board` component and import axios:
 
     ```javascript
-    /* Boardsx */
+    /* Board.jsx */
 
     import axios from 'axios';
     ```
