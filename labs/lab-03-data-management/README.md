@@ -1,6 +1,6 @@
-# Lab 03 - React Fundamentals
+# Lab 03 - Data Management
 
-- [Lab 03 - React Fundamentals](#lab-03---react-fundamentals)
+- [Lab 03 - Data Management](#lab-03---data-management)
   - [Getting a full fake REST API with json-server](#getting-a-full-fake-rest-api-with-json-server)
     - [Install JSON Server](#install-json-server)
     - [Adding mocked data to your project](#adding-mocked-data-to-your-project)
@@ -225,7 +225,9 @@ The `componentDidMount` method is is the best place to put calls to fetch data b
     }
     ```
 
-6. Into the render method of your Board component include the following content to render an empty card to create a new item and a map function to render the list of ideas:
+6. Into the render method of your Board component include the following content. You can build a collections of data, loop through this array using the JavaScript `map()` function and return an element for each item in the array. Usually you would render lists inside a component, which accepts an array of data and outputs an unordered list of elements. Assign a new key prop to each list item. A `key` is a special attribute you need to include when creating lists to help React identify which item has changed, added, removed, etc. The best way to pick a key is to use a unique string to identify a list item. You can use the IDs from your data.
+
+   Also, create an empty card to add a new item. In the next lab we will add an onClick action to create new ideas:
 
     ```javascript
     /* Board.jsx */
@@ -251,6 +253,10 @@ The `componentDidMount` method is is the best place to put calls to fetch data b
       }
     ```
 
+    Using indexes as keys is not recommend if the order of items may change because can negatively impact performance and may cause issues with component state.
+
+    > Learn more about [Lists and Keys in React](https://reactjs.org/docs/lists-and-keys.html)
+
 7. And, finally, add the following styles:
 
     ```scss
@@ -260,6 +266,7 @@ The `componentDidMount` method is is the best place to put calls to fetch data b
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
+      justify-content: space-between;
       width: 100%;
     }
 
