@@ -30,8 +30,6 @@ are much easier to develop, debug, and to generally think about.
 
 ### Main Characteristics of React
 
-![React operations](https://www.ibm.com/developerworks/library/wa-react-intro/figure1.png)[Image source](https://www.ibm.com/developerworks/library/wa-react-intro/index.html)
-
 - **Component-based Architecture**
   Applications are built using nested, reusable **components**. Components encapsulate a behavior, a view and a state.
 
@@ -49,5 +47,7 @@ are much easier to develop, debug, and to generally think about.
 
 - **Component Life-cycle**
   React defines the life cycle of components and provide a default implementation; these methods are executed at particular moments  of the life cycle, and they can be overridden to run custom code.
+
+> [React Documentation](https://reactjs.org/docs/getting-started.html)
 
 [Next >](../lab-01-start-react-project)

@@ -39,4 +39,4 @@ This React Masterclass is divided in the following labs:
 
     [Firefox extension](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/)
 
-[Lab 01 - What is React. Key Features >](./labs/lab-00-what-is-react)
+[Lab 00 - What is React. Key Features >](./labs/lab-00-what-is-react)
